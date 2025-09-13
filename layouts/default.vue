@@ -34,7 +34,7 @@
           </div>
           
           <!-- Mobile menu button -->
-          <button @click="mobileMenuOpen = !mobileMenuOpen" 
+          <button @click="toggleMobileMenu" 
                   class="md:hidden text-gray-700 hover:text-gray-900 transition duration-300">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -115,6 +115,12 @@
 
 <script setup>
 const mobileMenuOpen = ref(false)
+
+const toggleMobileMenu = () => {
+  console.log('Hamburger clicked! Current state:', mobileMenuOpen.value)
+  mobileMenuOpen.value = !mobileMenuOpen.value
+  console.log('New state:', mobileMenuOpen.value)
+}
 
 // Close mobile menu when route changes
 const route = useRoute()
