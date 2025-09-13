@@ -34,7 +34,7 @@
           </div>
           
           <!-- Mobile menu button -->
-          <button @click="toggleMobileMenu" 
+          <button @click="mobileMenuOpen = !mobileMenuOpen" 
                   class="md:hidden text-gray-700 hover:text-gray-900 transition duration-300">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -44,34 +44,43 @@
         </div>
         
         <!-- Mobile Navigation -->
-        <div v-if="mobileMenuOpen" class="md:hidden pb-4 border-t border-gray-200 mt-4 pt-4">
-          <div class="flex flex-col space-y-2">
-            <NuxtLink to="/" 
-                      @click="mobileMenuOpen = false"
-                      class="text-gray-600 hover:text-gray-900 transition duration-300 py-2 font-medium"
-                      :class="{ 'text-gray-900 font-semibold': $route.path === '/' }">
-              Home
-            </NuxtLink>
-            <NuxtLink to="/about" 
-                      @click="mobileMenuOpen = false"
-                      class="text-gray-600 hover:text-gray-900 transition duration-300 py-2 font-medium"
-                      :class="{ 'text-gray-900 font-semibold': $route.path === '/about' }">
-              About
-            </NuxtLink>
-            <NuxtLink to="/projects" 
-                      @click="mobileMenuOpen = false"
-                      class="text-gray-600 hover:text-gray-900 transition duration-300 py-2 font-medium"
-                      :class="{ 'text-gray-900 font-semibold': $route.path === '/projects' }">
-              Projects
-            </NuxtLink>
-            <NuxtLink to="/contact" 
-                      @click="mobileMenuOpen = false"
-                      class="text-gray-600 hover:text-gray-900 transition duration-300 py-2 font-medium"
-                      :class="{ 'text-gray-900 font-semibold': $route.path === '/contact' }">
-              Contact
-            </NuxtLink>
+        <Transition
+          enter-active-class="transition duration-200 ease-out"
+          enter-from-class="transform scale-95 opacity-0"
+          enter-to-class="transform scale-100 opacity-100"
+          leave-active-class="transition duration-75 ease-in"
+          leave-from-class="transform scale-100 opacity-100"
+          leave-to-class="transform scale-95 opacity-0"
+        >
+          <div v-show="mobileMenuOpen" class="md:hidden pb-4 border-t border-gray-200 mt-4 pt-4">
+            <div class="flex flex-col space-y-2">
+              <NuxtLink to="/" 
+                        @click="mobileMenuOpen = false"
+                        class="text-gray-600 hover:text-gray-900 transition duration-300 py-2 font-medium"
+                        :class="{ 'text-gray-900 font-semibold': $route.path === '/' }">
+                Home
+              </NuxtLink>
+              <NuxtLink to="/about" 
+                        @click="mobileMenuOpen = false"
+                        class="text-gray-600 hover:text-gray-900 transition duration-300 py-2 font-medium"
+                        :class="{ 'text-gray-900 font-semibold': $route.path === '/about' }">
+                About
+              </NuxtLink>
+              <NuxtLink to="/projects" 
+                        @click="mobileMenuOpen = false"
+                        class="text-gray-600 hover:text-gray-900 transition duration-300 py-2 font-medium"
+                        :class="{ 'text-gray-900 font-semibold': $route.path === '/projects' }">
+                Projects
+              </NuxtLink>
+              <NuxtLink to="/contact" 
+                        @click="mobileMenuOpen = false"
+                        class="text-gray-600 hover:text-gray-900 transition duration-300 py-2 font-medium"
+                        :class="{ 'text-gray-900 font-semibold': $route.path === '/contact' }">
+                Contact
+              </NuxtLink>
+            </div>
           </div>
-        </div>
+        </Transition>
       </div>
     </nav>
     
@@ -115,12 +124,6 @@
 
 <script setup>
 const mobileMenuOpen = ref(false)
-
-const toggleMobileMenu = () => {
-  console.log('Hamburger clicked! Current state:', mobileMenuOpen.value)
-  mobileMenuOpen.value = !mobileMenuOpen.value
-  console.log('New state:', mobileMenuOpen.value)
-}
 
 // Close mobile menu when route changes
 const route = useRoute()
