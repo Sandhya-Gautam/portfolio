@@ -1,6 +1,8 @@
-# Nuxt Minimal Starter
+# Sandhya Gautam Portfolio
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Portfolio website built with Nuxt 3 and deployed on GitHub Pages.
+
+Live site: https://sandhyagautam.com.np
 
 ## Setup
 
