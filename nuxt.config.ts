@@ -3,20 +3,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss'],
-  ssr: false,
+  ssr: true,
   nitro: {
     prerender: {
-      routes: ['/'],
-      crawlLinks: true
+      routes: ['/', '/about', '/projects', '/contact']
     }
   },
   app: {
     baseURL: '/'
-  },
-  experimental: {
-    payloadExtraction: false
-  },
-  generate: {
-    fallback: true
   }
 })
