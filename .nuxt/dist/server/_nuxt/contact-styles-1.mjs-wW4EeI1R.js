@@ -1,0 +1,5 @@
+const contact_vue_vue_type_style_index_0_scoped_80f01c64_lang = ".pattern-dots[data-v-80f01c64]{background-image:radial-gradient(circle at 2px 2px,rgba(156,163,175,.15) 1.5px,transparent 0);background-repeat:repeat;background-size:20px 20px}";
+export {
+  contact_vue_vue_type_style_index_0_scoped_80f01c64_lang as default
+};
+//# sourceMappingURL=contact-styles-1.mjs-wW4EeI1R.js.map
